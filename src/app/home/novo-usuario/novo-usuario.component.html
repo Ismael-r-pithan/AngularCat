@@ -1,31 +1,36 @@
 <div class="container">
 
-  <form>
+  <form [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
     <div class="row justify-content-center">
       <div class="col-6">
         <label class="form-label mt-2"> E-mail: </label>
-        <input placeholder="E-mail" class="form-control" />
+        <input placeholder="E-mail" class="form-control" formControlName="email"/>
+        <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors?.['required'] && novoUsuarioForm.get('email')?.touched"  mensagem="E-mail obrigatório"></app-mensagem>
+        <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors?.['email'] && novoUsuarioForm.get('email')?.touched"  mensagem="E-mail no formato incorreto"></app-mensagem>
+
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-6">
         <label class="form-label mt-2"> Nome Completo: </label>
-        <input placeholder="Nome Completo" class="form-control" />
+        <input placeholder="Nome Completo" class="form-control" formControlName="nomeCompleto" />
+        <app-mensagem *ngIf="novoUsuarioForm.get('nomeCompleto')?.errors && novoUsuarioForm.get('nomeCompleto')?.touched "  mensagem="Nome incorreto"></app-mensagem>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-6">
         <label class="form-label mt-2"> Nome de Usuário: </label>
-        <input placeholder="Nome de Usuário" class="form-control" />
+        <input placeholder="Nome de Usuário" class="form-control" formControlName="nomeUsuario" />
+        <app-mensagem *ngIf="novoUsuarioForm.get('nomeUsuario')?.errors?.['usuarioExistente']"  mensagem="Nome usuário já existente" ></app-mensagem>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-6 mb-2">
         <label class="form-label mt-2"> Senha: </label>
-        <input placeholder="Senha" type="password" class="form-control" />
+        <input placeholder="Senha" type="password" class="form-control" formControlName="senha" />
       </div>
     </div>
 

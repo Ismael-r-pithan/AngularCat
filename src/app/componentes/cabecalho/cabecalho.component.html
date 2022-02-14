@@ -1,0 +1,20 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand">Cat Book</a>
+    <div *ngIf="user$ | async as user" >
+
+      <div *ngIf="user.nome"; else login >
+      <i class="fa fa-user-circle mr-1">
+      </i>
+      <a class="mr-1"> {{ user.nome }} </a>
+      <a (click)="logout()"> Sair </a>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="navbar-text">
+      <a [routerLink]="['']"> Entrar </a>
+    </span>
+  </ng-template>
+</header>
