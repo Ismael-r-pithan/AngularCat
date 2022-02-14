@@ -1,6 +1,6 @@
 <div class="container">
-  <form (ngSubmit)="login()" #loginForm="ngForm">
 
+  <form (ngSubmit)="login()" #loginForm="ngForm">
     <div class="row justify-content-center">
       <div class="col-6">
       <label class="form-label mt-2"> Usuário: </label>
@@ -22,7 +22,12 @@
         <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Entrar</button>
       </div>
     </div>
-
   </form>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <p>Ainda nao possui conta ? <a routerLink="novousuario">Cadastre-se</a> </p>
+    </div>
+  </div>
 
 </div>
